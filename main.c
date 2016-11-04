@@ -17,18 +17,20 @@ int main(int argc, char** argv)
     // Blocking out space for waiting queue, current job, and jobs...
     struct Job* currentJob; 
     memset(&currentJob, '\0', sizeof(currentJob));
-    
     struct LinkedList waitingQueue;
-    memset(&waitingQueue, '\0', sizeof(waitingQueue));
-    
+    memset(&waitingQueue, '\0', sizeof(waitingQueue));    
     struct Job record[4];
     memset(&record, '\0', sizeof(4));
 
+
     // Read input from the file
-    readFile(record); 
+    readFile(record);
+
     
     // Number of elements in array of jobs
     int elements = sizeof record / sizeof record[0];
+
+
  
     // TODO: Find out why we can't insert more than 2 jobs? I'm thinking not enough memory is being allocated
     for (int i=0; i<2; i++){
@@ -41,10 +43,6 @@ int main(int argc, char** argv)
     // TODO: Find out why dequeue doesn't work
     // dequeue(&waitingQueue);
 
-    // print_queue(&waitingQueue);
-    //     for (int i=0; i<3; i++){
-    // }
-    
     // // Big clock loop  
     // do {
     //     if (cpu == true)
