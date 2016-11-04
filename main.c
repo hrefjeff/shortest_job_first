@@ -30,47 +30,61 @@ int main(int argc, char** argv)
     // Number of elements in array of jobs
     int elements = sizeof record / sizeof record[0];
  
+    // TODO: Find out why we can't insert more than 2 jobs?
+    for (int i=0; i<2; i++){
+        insert(record[i], &waitingQueue);
+        printf("Job %d has been enqueue'd \n",i);
+    }
+
+    print_queue(&waitingQueue);
+
+    // TODO: Find out why dequeue doesn't work
+    dequeue(&waitingQueue);
+
+    //print_queue(&waitingQueue);
+        // for (int i=0; i<3; i++){
+    // }
     
-    // Big clock loop  
-    do {
-        if (cpu == true)
-        {
-            cpuTime--;
-            if(cpuTime == 0)
-            {  
-                printf("%s %d %d %d", currentJob->name, currentJob->arrivalTime, 
-                        waitTime, clockTime); 
-                printf("\n");
-                cpu = false; 
-                elements--; 
-                cpuCount--;
-            }    
-        }
+    // // Big clock loop  
+    // do {
+    //     if (cpu == true)
+    //     {
+    //         cpuTime--;
+    //         if(cpuTime == 0)
+    //         {  
+    //             printf("%s %d %d %d", currentJob->name, currentJob->arrivalTime, 
+    //                     waitTime, clockTime); 
+    //             printf("\n");
+    //             cpu = false; 
+    //             elements--; 
+    //             cpuCount--;
+    //         }    
+    //     }
         
         
-        for(int i = 0; i < 4; i++)
-        {
-            if(clockTime == record[i].arrivalTime)
-            {
-                printf("Job %d has arrived!!! \n",i);
-                insert(record[i], &waitingQueue);               
-                printf("Job %d has been enqueue'd \n",i);
-                print_queue(&waitingQueue);
-                cpuCount++; 
-            }
-        }
+    //     for(int i = 0; i < 4; i++)
+    //     {
+    //         if(clockTime == record[i].arrivalTime)
+    //         {
+    //             printf("Job %d has arrived!!! \n",i);
+    //             insert(record[i], &waitingQueue);               
+    //             printf("Job %d has been enqueue'd \n",i);
+    //             print_queue(&waitingQueue);
+    //             cpuCount++; 
+    //         }
+    //     }
         
-        if((cpu == false) && (!isEmpty(&waitingQueue)))
-        { 
-            currentJob = dequeue(&waitingQueue);
-            cpuTime = currentJob->serviceTime;
-            waitTime = clockTime - currentJob->arrivalTime; 
-            cpu = true;            
-        }
+    //     if((cpu == false) && (!isEmpty(&waitingQueue)))
+    //     { 
+    //         currentJob = dequeue(&waitingQueue);
+    //         cpuTime = currentJob->serviceTime;
+    //         waitTime = clockTime - currentJob->arrivalTime; 
+    //         cpu = true;            
+    //     }
                 
-        clockTime++; 
+    //     clockTime++; 
        
-    } while ((!isEmpty(&waitingQueue)) || (cpu == true) || (elements > 0)); 
+    // } while ((!isEmpty(&waitingQueue)) || (cpu == true) || (elements > 0)); 
 
  
     return (EXIT_SUCCESS);

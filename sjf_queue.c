@@ -33,8 +33,7 @@ void insert(struct Job record, struct LinkedList *queue)
     
     // If new current service time is less than current front's service time,
     // front = new node 
-    printf("%d \n", (record.serviceTime));
-    printf("%d \n", (queue->front->job.serviceTime));
+    printf("%s \n", record.name);
     if(record.serviceTime < queue->front->job.serviceTime)
     {
         newNode->next = queue->front;
@@ -55,101 +54,6 @@ void insert(struct Job record, struct LinkedList *queue)
         prev->next = newNode;
         newNode->next-> next = temp; 
     }
-        /*while(queue->front != NULL (record.serviceTime >= temp->serviceTime)) 
-        {           
-            if(record.serviceTime > queue->front->serviceTime)          
-            {
-                //Traverse to location where the node needs to be inserted
-                previous = queue->front;    
-                queue->front = queue->front->next;
-            }   
-            
-            else
-            {
-                //Insert the node
-                printf("Insert node... \n");
-                previous = newNode->next;
-                //previous->next = newNode; 
-                //previous = newNode; 
-                newNode->next = queue->front; 
-                //previous = queue->front;
-                previous = newNode->next;
-                queue->front = queue->front->next;
-            }               
-        }
-        printf("Insert node finished \n");
-        //newNode->next = queue->front;
-        previous->next = newNode; 
-        printf("Insert node finished \n");
-    }
-*/
-  /*  
-    struct Node* previous = (struct Node*) malloc(sizeof(struct Node));
-    //previous = NULL;
-    previous = NULL;
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-        
-    for(int i = 0; i < 4; i++)
-    {
-       newNode->name[i] = record.name[i]; 
-    }
-
-    newNode->arrivalTime = record.arrivalTime;
-    newNode->serviceTime = record.serviceTime;
-    newNode->priority = record.priority;
-    newNode->next = NULL;
-    
-    // If linked list is empty...
-    if(queue->front == NULL && queue->back == NULL)
-    {   
-       // newNode->next = NULL;
-        queue->front = newNode;
-    }
-
-    
-    // If new node's service time is less than current front's service time,
-    // front = new node 
-   // printf("%d \n", (newNode->serviceTime));
-   // printf("%d \n", (queue->front->serviceTime));
-    /*if((newNode->serviceTime) < (queue->front->serviceTime))
-    {
-        printf("Hello4 \n");
-        newNode->next = queue->front;
-        queue->front = newNode;
-    }
-
-    else 
-    {
-      
-        while((newNode->serviceTime) >= (queue->front->serviceTime) && queue->front != NULL)    
-        {   
-          // printf("Hello6 \n");
-          // if((newNode->serviceTime) > (queue->front->serviceTime))           
-           //{
-                //Traverse to location where the node needs to be inserted
-                printf ("Finding node position \n");
-                previous = queue->front;    
-                queue->front = queue->front->next;
-        }   
-
-            //else
-            //{
-               //Insert the node
-               printf("Insert node... \n");
-               previous->next = (struct Node*) malloc(sizeof(struct Node));
-               //printf("Insert node2 \n");
-               previous->next = newNode;
-               printf("Insert node3 \n");
-               newNode->next = queue->front;    
-               printf("Insert node finished \n");
-            //}             
-        //}
-        printf("Hello8 \n");
-        previous->next = newNode; 
-    //}        
-    }
-    printf("added \n");
-     */
 }
 
 //------------------------------------------------------------------------------
@@ -160,7 +64,7 @@ struct Job* dequeue(struct LinkedList *queue)
     struct Node* temp = queue->front;
     struct Node* recordInfo = temp;
         
-    if((queue->front == NULL))//&& (queue->back == NULL)) 
+    if(queue->front == NULL)
     {
        printf("Dequeue: Queue empty \n");  
     }
@@ -181,7 +85,7 @@ struct Job* dequeue(struct LinkedList *queue)
     free(queue->front); 
     queue->front = temp;
     
-    return recordInfo; 
+    return recordInfo;
 }
 
 //------------------------------------------------------------------------------
