@@ -30,7 +30,7 @@ int main(int argc, char** argv)
     // Number of elements in array of jobs
     int elements = sizeof record / sizeof record[0];
  
-    // TODO: Find out why we can't insert more than 2 jobs?
+    // TODO: Find out why we can't insert more than 2 jobs? I'm thinking not enough memory is being allocated
     for (int i=0; i<2; i++){
         insert(record[i], &waitingQueue);
         printf("Job %d has been enqueue'd \n",i);
@@ -39,10 +39,10 @@ int main(int argc, char** argv)
     print_queue(&waitingQueue);
 
     // TODO: Find out why dequeue doesn't work
-    dequeue(&waitingQueue);
+    // dequeue(&waitingQueue);
 
-    //print_queue(&waitingQueue);
-        // for (int i=0; i<3; i++){
+    // print_queue(&waitingQueue);
+    //     for (int i=0; i<3; i++){
     // }
     
     // // Big clock loop  
